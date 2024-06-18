@@ -8,22 +8,22 @@ const Footer = () => {
         <div className="grid grid-cols-1 p-5 md:grid-cols-4 gap-8">
           <div className="pl-14">
             <h2 className="text-xl font-bold mb-4">Exclusive</h2>
-            <p className="text-gray-400 mb-2">Subscribe</p>
-            <p className="text-gray-400">Get 10% off your first order</p>
+            <p className="text-lg mb-2">Subscribe</p>
+            <p className="text-md">Get 10% off your first order</p>
             <div className="mt-4">
-              <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Enter your email</button>
+              <input type="text" className="bg-black text-gray-400 py-2 px-4 border-2 rounded" placeholder='Enter your email'/>
             </div>
           </div>
-          <div>
+          <div className="pl-14">
             <h2 className="text-xl font-bold mb-4">Support</h2>
-            <p className="text-gray-400 mb-2">111 Bijoy sarani, Dhaka,</p>
-            <p className="text-gray-400 mb-2">DH 1515, Bangladesh.</p>
-            <p className="text-gray-400 mb-2">exclusive@gmail.com</p>
-            <p className="text-gray-400">+88015-88888-9999</p>
+            <p className="text-md mb-2">111 Bijoy sarani, Dhaka,</p>
+            <p className="text-md mb-2">DH 1515, Bangladesh.</p>
+            <p className="text-md mb-2">exclusive@gmail.com</p>
+            <p className="text-md">+88015-88888-9999</p>
           </div>
-          <div>
+          <div className="pl-14">
             <h2 className="text-xl font-bold mb-4">Account</h2>
-            <ul className="text-gray-400">
+            <ul className="text-md">
               <li className="mb-2">My Account</li>
               <li className="mb-2">Login / Register</li>
               <li className="mb-2">Cart</li>
@@ -31,9 +31,9 @@ const Footer = () => {
               <li className="mb-2">Shop</li>
             </ul>
           </div>
-          <div>
+          <div className="pl-10">
             <h2 className="text-xl font-bold mb-4">Quick Link</h2>
-            <ul className="text-gray-400">
+            <ul className="text-md">
               <li className="mb-2">Privacy Policy</li>
               <li className="mb-2">Terms Of Use</li>
               <li className="mb-2">FAQ</li>
