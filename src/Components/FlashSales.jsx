@@ -1,55 +1,61 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
+import FS1 from '../assets/FSproduct1.png';
+import FS2 from '../assets/FSproduct2.png';
+import FS3 from '../assets/FSproduct3.png';
+import FS4 from '../assets/FSproduct4.png';
 
 export default function FlashSales() {
     const [products, setProducts] = useState([
         {
             id: 1,
             name: "HAVIT HV-G92 Gamepad",
-            image: "https://i.ibb.co/ZVmP7v9/gamepad.png",
+            image: FS1,
             price: 120,
             originalPrice: 160,
             discount: 40,
-            rating: 4.5,
+            rating: "-40%",
             reviews: 88,
         },
         {
             id: 2,
             name: "AK-900 Wired Keyboard",
-            image: "https://i.ibb.co/993g0D7/keyboard.png",
+            image: FS2,
             price: 960,
             originalPrice: 1160,
             discount: 35,
-            rating: 5.6,
+            rating: "-35%",
             reviews: 75,
         },
         {
             id: 3,
             name: "IPS LCD Gaming Monitor",
-            image: "https://i.ibb.co/tL8Y38m/monitor.png",
+            image: FS3,
             price: 370,
             originalPrice: 400,
             discount: 30,
-            rating: 4.8,
+            rating: "-30%",
             reviews: 99,
         },
         {
             id: 4,
             name: "S-Series Comfort Chair",
-            image: "https://i.ibb.co/t3W7d9K/chair.png",
+            image: FS4,
             price: 375,
             originalPrice: 400,
             discount: 25,
-            rating: 4.7,
+            rating: "-25%",
             reviews: 99,
         },
         {
             id: 5,
             name: "S-Series Comfort Chair",
-            image: "https://i.ibb.co/t3W7d9K/chair.png",
+            image: FS4,
             price: 375,
             originalPrice: 400,
             discount: 25,
-            rating: 4.7,
+            rating: "-25%",
             reviews: 99,
         },
     ]);
@@ -140,30 +146,32 @@ export default function FlashSales() {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mt-8">
                     {products.map((product) => (
                         <div
                             key={product.id}
-                            className="bg-white relative"
+                            classNameName="bg-white relative"
                             onMouseEnter={() => setHoveredImageId(product.id)}
                             onMouseLeave={() => setHoveredImageId(null)}
                         >
-                            <div class="relative">
-                                <div class="absolute top-2 left-2 bg-red-500 text-sm font-bold py-1 px-2 rounded-md">
+                            <div className="relative">
+                                <div className="absolute top-2 left-2 bg-red-400 text-xs text-white w-12 h-6 py-1 px-2 rounded-md">
                                     {product.rating}
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-4 w-4 inline-block"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                    </svg>
+
                                 </div>
-                                <div class="absolute bottom-0">
+                                <div className="absolute top-1 right-2 flex flex-col gap-1 rounded-full">
+                                    <button className=" bg-white p-2 rounded-full">
+                                        <FontAwesomeIcon icon={faHeart} className="w-4 h-4 text-gray-600" />
+                                    </button>
+                                    <button className=" bg-white p-2 rounded-full">
+                                        <FontAwesomeIcon icon={faEye} className="w-5 h-5 text-gray-600" />
+                                    </button>
+                                </div>
+                                <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
                                             onClick={() => handleProductClick(product)}
-                                            class="bg-black text-white font-bold py-2 px-4 rounded-b-md"
+                                            className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
                                             Add To Cart
                                         </button>
@@ -172,17 +180,19 @@ export default function FlashSales() {
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    class="w-full h-48 object-cover rounded-md"
+                                    className="w-full h-48 object-scale-down rounded-sm bg-gray-100"
                                 />
-                                
+
                             </div>
                             <div className="p-2">
                                 <h3 className="text-lg font-bold text-gray-800">
                                     {product.name}
                                 </h3>
-                                <p className="text-sm text-gray-600">
-                                    {product.originalPrice} → {product.price}
+                                <p className="text-sm">
+                                    <span className="text-red-500 font-bold">{product.price}</span>
+                                    <span className="text-gray-500 line-through ml-2">{product.originalPrice}</span>
                                 </p>
+
                                 <p className="text-sm text-gray-600">
                                     Discount: {product.discount}%
                                 </p>
@@ -193,32 +203,32 @@ export default function FlashSales() {
                         </div>
                     ))}
                 </div>
-                {/* <div className="flex items-center justify-between mt-8">
+                {/* <div classNameName="flex items-center justify-between mt-8">
                     
-                    <div className="flex items-center">
+                    <div classNameName="flex items-center">
                         <button
                             onClick={handleAddToCart}
-                            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full"
+                            classNameName="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full"
                         >
                             Add to Cart
                         </button>
                         {showCart && (
-                            <div className="bg-white rounded-lg shadow-md p-4 absolute top-0 right-0 mt-4">
-                                <h2 className="text-lg font-bold text-gray-800">
+                            <div classNameName="bg-white rounded-lg shadow-md p-4 absolute top-0 right-0 mt-4">
+                                <h2 classNameName="text-lg font-bold text-gray-800">
                                     Your Cart
                                 </h2>
                                 <ul>
                                     {products.map((product) => (
-                                        <li key={product.id} className="flex items-center py-2">
+                                        <li key={product.id} classNameName="flex items-center py-2">
                                             <img
                                                 src={product.image}
                                                 alt={product.name}
-                                                className="w-12 h-12 object-cover rounded-lg mr-4"
+                                                classNameName="w-12 h-12 object-cover rounded-lg mr-4"
                                             />
-                                            <span className="text-sm text-gray-600">
+                                            <span classNameName="text-sm text-gray-600">
                                                 {product.name}
                                             </span>
-                                            <span className="text-sm text-gray-600 ml-4">
+                                            <span classNameName="text-sm text-gray-600 ml-4">
                                                 {product.price}
                                             </span>
                                         </li>
@@ -226,7 +236,7 @@ export default function FlashSales() {
                                 </ul>
                                 <button
                                     onClick={handleCloseCart}
-                                    className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full"
+                                    classNameName="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full"
                                 >
                                     Close
                                 </button>
