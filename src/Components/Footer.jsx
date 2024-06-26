@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
   return (
@@ -10,8 +11,11 @@ const Footer = () => {
             <h2 className="text-xl font-bold mb-4">Exclusive</h2>
             <p className="text-lg mb-2">Subscribe</p>
             <p className="text-md">Get 10% off your first order</p>
-            <div className="mt-4">
-              <input type="text" className="bg-black text-gray-400 py-2 px-4 border-2 rounded" placeholder='Enter your email'/>
+            <div className="mt-4 relative">
+              <input type="text" className="bg-black text-gray-400 py-2 px-4 border-2 rounded pr-10" placeholder='Enter your email' />
+              <span className="absolute top-2 right-14">
+                <i className="fas fa-paper-plane text-gray-400"></i>
+              </span>
             </div>
           </div>
           <div className="pl-14">
@@ -41,8 +45,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="mt-8 flex items-center justify-between">
-          <p className="text-gray-400">&copy; Copyright Rimel 2022. All right reserved</p>
+        <div className="mt-8 flex items-center justify-center">
           <div className="flex space-x-4">
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook-f text-2xl"></i>
@@ -58,6 +61,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        <p className=" mt-4 flex item-center justify-center border-t border-gray-800">© Copyright Rimel 2022. All rights reserved.</p>
       </div>
     </footer>
   );
