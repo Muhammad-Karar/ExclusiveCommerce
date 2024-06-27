@@ -17,7 +17,7 @@ export default function Carousel() {
     }, []);
 
     return (
-            <div className="w-3/4 p-10 md:grid-cols-2">
+            <div className="w-3/4 p-10">
                 <div className="relative h-96">
                     <img
                         src={images[activeIndex]}
