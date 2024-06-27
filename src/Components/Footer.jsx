@@ -6,15 +6,15 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 p-5 md:grid-cols-4 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 p-5 md:grid-cols-4 sm:grid-cols-3 gap-8">
           <div className="pl-14">
             <h2 className="text-xl font-bold mb-4">Exclusive</h2>
             <p className="text-lg mb-2">Subscribe</p>
             <p className="text-md">Get 10% off your first order</p>
-            <div className="mt-4 relative">
-              <input type="text" className="bg-black text-gray-400 py-2 px-4 border-2 rounded pr-10" placeholder='Enter your email' />
-              <span className="absolute top-2 right-14">
-                <i className="fas fa-paper-plane text-gray-400"></i>
+            <div class="mt-4 relative sm:max-w-md mx-auto">
+              <input type="text" class="bg-black text-gray-400 py-2 px-4 pr-10 border-2 rounded w-full sm:pr-12" placeholder="Enter your email" />
+              <span class="absolute top-1/2 transform -translate-y-1/2 right-4 sm:right-6">
+                <i class="fas fa-paper-plane text-gray-400"></i>
               </span>
             </div>
           </div>

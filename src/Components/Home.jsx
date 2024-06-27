@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="flex">
+            <div className="flex sm:w-full sm:pl-4 sm:pt-4 sm:border-none">
                 <Sidebar />
                 <Carousel />
             </div>

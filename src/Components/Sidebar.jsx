@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Sidebar() {
     return (
-        <div className="w-1/5 pl-14 pt-5  border-r border-black">
+        <div className="w-1/5 pl-14 pt-5 border-r border-black">
             <ul>
                 <li className="mb-2">
                     <a
