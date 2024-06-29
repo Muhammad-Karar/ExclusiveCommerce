@@ -2,6 +2,8 @@ import React from 'react';
 import FlashSales from './FlashSales';
 import Sidebar from './Sidebar';
 import Carousel from './Carousel';
+import Category from './Category';
+import BestSellingProductus from './BestSellingProductus';
 
 export default function Home() {
     return (
@@ -10,7 +12,9 @@ export default function Home() {
                 <Sidebar />
                 <Carousel />
             </div>
-            <FlashSales />
+            <FlashSales/>
+            <Category/>
+            <BestSellingProductus/>
         </>
     );
 }

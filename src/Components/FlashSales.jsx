@@ -5,6 +5,7 @@ import FS1 from '../assets/FSproduct1.png';
 import FS2 from '../assets/FSproduct2.png';
 import FS3 from '../assets/FSproduct3.png';
 import FS4 from '../assets/FSproduct4.png';
+import Slider from "react-slick";
 
 export default function FlashSales() {
     const [products, setProducts] = useState([
@@ -102,11 +103,16 @@ export default function FlashSales() {
         setCurrentProduct(product);
     };
     const [hoveredImageId, setHoveredImageId] = useState(null);
-
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
 
     return (
-        <div className="min-h-screen">
-            <div className="container mx-auto p-12">
+            <div className="container mx-auto py-10 max-w-screen-xl">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center">
                         <div className="bg-red-500 w-4 h-10 rounded-md mr-4"></div>
@@ -150,21 +156,20 @@ export default function FlashSales() {
                     {products.map((product) => (
                         <div
                             key={product.id}
-                            classNameName="bg-white relative"
+                            className="bg-white relative"
                             onMouseEnter={() => setHoveredImageId(product.id)}
                             onMouseLeave={() => setHoveredImageId(null)}
                         >
                             <div className="relative">
                                 <div className="absolute top-2 left-2 bg-red-400 text-xs text-white w-12 h-6 py-1 px-2 rounded-md">
                                     {product.rating}
-
                                 </div>
                                 <div className="absolute top-1 right-2 flex flex-col gap-1 rounded-full">
-                                    <button className=" bg-white p-2 rounded-full">
+                                    <button className="bg-white rounded-full w-8 h-8">
                                         <FontAwesomeIcon icon={faHeart} className="w-4 h-4 text-gray-600" />
                                     </button>
-                                    <button className=" bg-white p-2 rounded-full">
-                                        <FontAwesomeIcon icon={faEye} className="w-5 h-5 text-gray-600" />
+                                    <button className="bg-white rounded-full w-8 h-8">
+                                        <FontAwesomeIcon icon={faEye} className="w-4 h-4text-gray-600" />
                                     </button>
                                 </div>
                                 <div className="absolute bottom-0 left-0 w-full group">
@@ -182,7 +187,6 @@ export default function FlashSales() {
                                     alt={product.name}
                                     className="w-full h-48 object-scale-down rounded-sm bg-gray-100"
                                 />
-
                             </div>
                             <div className="p-2">
                                 <h3 className="text-lg font-bold text-gray-800">
@@ -192,7 +196,6 @@ export default function FlashSales() {
                                     <span className="text-red-500 font-bold">{product.price}</span>
                                     <span className="text-gray-500 line-through ml-2">{product.originalPrice}</span>
                                 </p>
-
                                 <p className="text-sm text-gray-600">
                                     Discount: {product.discount}%
                                 </p>
@@ -203,48 +206,9 @@ export default function FlashSales() {
                         </div>
                     ))}
                 </div>
-                {/* <div classNameName="flex items-center justify-between mt-8">
-                    
-                    <div classNameName="flex items-center">
-                        <button
-                            onClick={handleAddToCart}
-                            classNameName="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full"
-                        >
-                            Add to Cart
-                        </button>
-                        {showCart && (
-                            <div classNameName="bg-white rounded-lg shadow-md p-4 absolute top-0 right-0 mt-4">
-                                <h2 classNameName="text-lg font-bold text-gray-800">
-                                    Your Cart
-                                </h2>
-                                <ul>
-                                    {products.map((product) => (
-                                        <li key={product.id} classNameName="flex items-center py-2">
-                                            <img
-                                                src={product.image}
-                                                alt={product.name}
-                                                classNameName="w-12 h-12 object-cover rounded-lg mr-4"
-                                            />
-                                            <span classNameName="text-sm text-gray-600">
-                                                {product.name}
-                                            </span>
-                                            <span classNameName="text-sm text-gray-600 ml-4">
-                                                {product.price}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <button
-                                    onClick={handleCloseCart}
-                                    classNameName="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full"
-                                >
-                                    Close
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                </div> */}
+                <div className="flex item-center justify-center m-8">
+                    <button className="bg-red-400 px-5 py-2 rounded-sm text-white hover:bg-red-600">View All Products</button>
+                </div>
             </div>
-        </div>
     );
 }
