@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Navbar() {
-    const [menuOpen, setMenuOpen] = useState(false);
-
     return (
-        <nav className="bg-white shadow-md">
+        <nav className="bg-white shadow-md fixed top-0 left-0 z-50 w-full">
             <div className="container mx-auto px-4 py-2 flex justify-between items-center">
                 <div className="text-xl font-bold">Exclusive Commerce</div>
                 <div className="hidden md:flex space-x-8">
-                    <a href="#" className="hover:text-gray-700 hover:underline font-bold">Home</a>
-                    <a href="#" className="hover:text-gray-700 hover:underline font-bold">Contact</a>
-                    <a href="#" className="hover:text-gray-700 hover:underline font-bold">About</a>
-                    <a href="#" className="hover:text-gray-700 hover:underline font-bold">Sign Up</a>
+                    <a href="#" className="hover:bg-red-400 hover:duration-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium font-bold">Home</a>
+                    <a href="#" className="hover:bg-red-400 hover:duration-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium font-bold">Contact</a>
+                    <a href="#" className="hover:bg-red-400 hover:duration-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium font-bold">About</a>
+                    <a href="#" className="hover:bg-red-400 hover:duration-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium font-bold">Sign Up</a>
                 </div>
-                <div className="flex justify-end">
-                    <div className="flex space-x-4">
+                <div className="flex justify-end items-center">
+                    <div className="hidden md:flex space-x-4">
                         <input
                             type="text"
                             placeholder="What are you looking for?"
                             className="border rounded-md px-3 py-2 focus:outline-none"
                         />
-                        <button className="rounded-full bg-gray-200 p-2">
+                        <button className="rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -36,7 +34,7 @@ function Navbar() {
                                 />
                             </svg>
                         </button>
-                        <button className="rounded-full bg-gray-200 p-2">
+                        <button className="rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -52,7 +50,7 @@ function Navbar() {
                                 />
                             </svg>
                         </button>
-                        <button className="rounded-full bg-gray-200 p-2">
+                        <button className="rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -69,41 +67,59 @@ function Navbar() {
                             </svg>
                         </button>
                     </div>
-                    <button
-                        className="md:hidden rounded-full bg-gray-200 p-2"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                    <div className="md:hidden relative inset-y-0 left-0 flex items-center">
+                        <input type="checkbox" id="menu-toggle" className="peer hidden" />
+                        <label
+                            htmlFor="menu-toggle"
+                            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </button>
-                    {menuOpen && (
-                        <div className="absolute top-12 right-0 w-40 bg-white shadow-md py-2">
-                            <a href="#" className="block px-4 py-2 hover:text-gray-700">
-                                Home
-                            </a>
-                            <a href="#" className="block px-4 py-2 hover:text-gray-700">
-                                Contact
-                            </a>
-                            <a href="#" className="block px-4 py-2 hover:text-gray-700">
-                                About
-                            </a>
-                            <a href="#" className="block px-4 py-2 hover:text-gray-700">
-                                Sign Up
-                            </a>
-                        </div>
-                    )}
+                            <span className="sr-only">Open main menu</span>
+                            <svg
+                                className="block h-6 w-6 peer-checked:hidden"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                                />
+                            </svg>
+                            <svg
+                                className="hidden h-6 w-6 peer-checked:block"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className="md:hidden hidden peer-checked:block" id="mobile-menu">
+                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                        Home
+                    </a>
+                    <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                        Contact
+                    </a>
+                    <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                        About
+                    </a>
+                    <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                        Sign Up
+                    </a>
                 </div>
             </div>
         </nav>

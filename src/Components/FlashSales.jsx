@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
+import { faHeart} from '@fortawesome/free-regular-svg-icons';
 import FS1 from '../assets/FSproduct1.png';
 import FS2 from '../assets/FSproduct2.png';
 import FS3 from '../assets/FSproduct3.png';
 import FS4 from '../assets/FSproduct4.png';
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import '../App.css';
 
 export default function FlashSales() {
     const [products, setProducts] = useState([
@@ -105,57 +108,84 @@ export default function FlashSales() {
     const [hoveredImageId, setHoveredImageId] = useState(null);
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
     return (
-            <div className="container mx-auto py-10 max-w-screen-xl">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                        <div className="bg-red-500 w-4 h-10 rounded-md mr-4"></div>
-                        <h1 className="text-2xl font-bold text-red-500">Today's</h1>
-                    </div>
-                </div>
+        <div className="container mx-auto py-10 max-w-screen-xl">
+            <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                    <div className="flex items-center">
-                        <h2 className="text-3xl font-bold text-gray-800 mt-3">
-                            Flash Sales
-                        </h2>
+                    <div className="bg-red-500 w-4 h-10 rounded-md mr-4"></div>
+                    <h1 className="text-2xl font-bold text-red-500">Today's</h1>
+                </div>
+            </div>
+            <div className="flex items-center">
+                <div className="flex items-center">
+                    <h2 className="text-3xl font-bold text-gray-800 mt-3">
+                        Flash Sales
+                    </h2>
+                </div>
+                <div className="flex items-center mt-3 ml-5">
+                    <div className="flex items-center ml-4">
+                        <span className="text-3xl font-bold text-gray-800">
+                            {countdown.days}
+                        </span>
+                        <span className="text-sm text-gray-600 ml-2">Days</span>
                     </div>
-                    <div className="flex items-center mt-3 ml-5">
-                        <div className="flex items-center ml-4">
-                            <span className="text-3xl font-bold text-gray-800">
-                                {countdown.days}
-                            </span>
-                            <span className="text-sm text-gray-600 ml-2">Days</span>
-                        </div>
-                        <div className="flex items-center ml-4">
-                            <span className="text-3xl font-bold text-gray-800">
-                                {countdown.hours}
-                            </span>
-                            <span className="text-sm text-gray-600 ml-2">Hours</span>
-                        </div>
-                        <div className="flex items-center ml-4">
-                            <span className="text-3xl font-bold text-gray-800">
-                                {countdown.minutes}
-                            </span>
-                            <span className="text-sm text-gray-600 ml-2">Minutes</span>
-                        </div>
-                        <div className="flex items-center ml-4">
-                            <span className="text-3xl font-bold text-gray-800">
-                                {countdown.seconds}
-                            </span>
-                            <span className="text-sm text-gray-600 ml-2">Seconds</span>
-                        </div>
+                    <div className="flex items-center ml-4">
+                        <span className="text-3xl font-bold text-gray-800">
+                            {countdown.hours}
+                        </span>
+                        <span className="text-sm text-gray-600 ml-2">Hours</span>
+                    </div>
+                    <div className="flex items-center ml-4">
+                        <span className="text-3xl font-bold text-gray-800">
+                            {countdown.minutes}
+                        </span>
+                        <span className="text-sm text-gray-600 ml-2">Minutes</span>
+                    </div>
+                    <div className="flex items-center ml-4">
+                        <span className="text-3xl font-bold text-gray-800">
+                            {countdown.seconds}
+                        </span>
+                        <span className="text-sm text-gray-600 ml-2">Seconds</span>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mt-8">
-                    {products.map((product) => (
+            </div>
+            <Slider {...settings}>
+                {products.map((product) => (
+                    <div key={product.id} className="p-2">
                         <div
-                            key={product.id}
                             className="bg-white relative"
                             onMouseEnter={() => setHoveredImageId(product.id)}
                             onMouseLeave={() => setHoveredImageId(null)}
@@ -167,9 +197,6 @@ export default function FlashSales() {
                                 <div className="absolute top-1 right-2 flex flex-col gap-1 rounded-full">
                                     <button className="bg-white rounded-full w-8 h-8">
                                         <FontAwesomeIcon icon={faHeart} className="w-4 h-4 text-gray-600" />
-                                    </button>
-                                    <button className="bg-white rounded-full w-8 h-8">
-                                        <FontAwesomeIcon icon={faEye} className="w-4 h-4text-gray-600" />
                                     </button>
                                 </div>
                                 <div className="absolute bottom-0 left-0 w-full group">
@@ -204,11 +231,12 @@ export default function FlashSales() {
                                 </p>
                             </div>
                         </div>
-                    ))}
-                </div>
-                <div className="flex item-center justify-center m-8">
-                    <button className="bg-red-400 px-5 py-2 rounded-sm text-white hover:bg-red-600">View All Products</button>
-                </div>
+                    </div>
+                ))}
+            </Slider>
+            <div className="flex item-center justify-center m-8">
+                <button className="bg-red-400 px-5 py-2 rounded-sm text-white hover:bg-red-600">View All Products</button>
             </div>
+        </div>
     );
 }
