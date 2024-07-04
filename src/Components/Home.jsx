@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Carousel from './Carousel';
 import Category from './Category';
 import BestSellingProductus from './BestSellingProductus';
+import PromoBanner from './PromoBanner';
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <FlashSales/>
             <Category/>
             <BestSellingProductus/>
+            <PromoBanner/>
         </>
     );
 }
