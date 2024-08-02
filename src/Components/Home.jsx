@@ -5,6 +5,7 @@ import Carousel from './Carousel';
 import Category from './Category';
 import BestSellingProductus from './BestSellingProductus';
 import PromoBanner from './PromoBanner';
+import OurProduct from './OurProduct';
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
             <Category/>
             <BestSellingProductus/>
             <PromoBanner/>
+            <OurProduct/>
         </>
     );
 }
