@@ -1,0 +1,22 @@
+
+.two-row-slider .slick-prev, .slick-next {
+    z-index: 1;
+    color: black;  /* Change button color to black for visibility */
+    width: 30px;
+    height: 30px;
+  }
+  
+  .two-row-slider .slick-prev::before, .slick-next::before {
+    font-size: 25px;
+    color: slategrey;  /* Change button icon color to black */
+  }
+  
+  .two-row-slider .slick-prev {
+    left: -55px;
+    top: 260px;  /* Adjust the position if needed */
+  }
+  
+  .two-row-slider .slick-next {
+    right: -50px;  /* Adjust the position if needed */
+    top: 260px;
+  }

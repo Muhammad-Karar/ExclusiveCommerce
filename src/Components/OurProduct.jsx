@@ -10,7 +10,7 @@ import EOproduct6 from '../assets/EOproduct6.png';
 import EOproduct7 from '../assets/EOproduct7.png';
 import EOproduct8 from '../assets/EOproduct8.png';
 import Slider from "react-slick";
-import '../App.css';
+import '../OurProduct.css';
 
 export default function OurProduct() {
 
@@ -46,7 +46,7 @@ export default function OurProduct() {
         {
             id: 5,
             name: "Kids Electric Car",
-            image: EOproduct4,
+            image: EOproduct5,
             price: 960,
             reviews: 65,
         },
@@ -71,15 +71,31 @@ export default function OurProduct() {
             price: 660,
             reviews: 55,
         },
+        {
+            id: 9,
+            name: "Quilted Satin Jacket",
+            image: EOproduct8,
+            price: 660,
+            reviews: 55,
+        },
+        {
+            id: 10,
+            name: "Quilted Satin Jacket",
+            image: EOproduct8,
+            price: 660,
+            reviews: 55,
+        },
     ]);
     const [hoveredImageId, setHoveredImageId] = useState(null);
     var settings = {
         dots: true,
+        className: "center",
         infinite: false,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 0,
+        rows: 2,
         responsive: [
             {
                 breakpoint: 1024,
@@ -123,7 +139,7 @@ export default function OurProduct() {
                     </h2>
                 </div>
             </div>
-            <Slider {...settings}>
+            <Slider {...settings} className="two-row-slider">
                 {products.map((product) => (
                     <div key={product.id} className="p-2">
                         <div
