@@ -6,6 +6,8 @@ import Category from './Category';
 import BestSellingProductus from './BestSellingProductus';
 import PromoBanner from './PromoBanner';
 import OurProduct from './OurProduct';
+import NewArrival from './NewArrival';
+import Feature from './Feature';
 
 export default function Home() {
     return (
@@ -19,6 +21,8 @@ export default function Home() {
             <BestSellingProductus/>
             <PromoBanner/>
             <OurProduct/>
+            <NewArrival/>
+            <Feature/>
         </>
     );
 }
