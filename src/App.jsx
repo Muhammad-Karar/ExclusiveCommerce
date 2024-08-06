@@ -10,7 +10,6 @@ export default function App() {
     <Navbar/>
     <RRouter/>
     <Footer/>
-   
     </>
   )
 }

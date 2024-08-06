@@ -9,7 +9,6 @@ import OurProduct from './OurProduct';
 import NewArrival from './NewArrival';
 import Feature from './Feature';
 
-
 export default function Home() {
     return (
         <>
