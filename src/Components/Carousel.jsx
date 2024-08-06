@@ -17,7 +17,7 @@ export default function Carousel() {
     }, []);
 
     return (
-        <div className="w-3/4 p-10 mt-14">
+        <div className="w-full p-10 mt-14">
             <div className="relative h-96">
                 <img
                     src={images[activeIndex]}
