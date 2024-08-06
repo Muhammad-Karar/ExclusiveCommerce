@@ -6,7 +6,7 @@ import PromoBanner from '../Components/PromoBanner';
 import OurProduct from '../Components/OurProduct';
 import NewArrival from '../Components/NewArrival';
 import Feature from '../Components/Feature';
-import SideBarPLayout from './SideBarPLayout';
+import SideBarPLayout from '../Components/SideBarPLayout';
 
 export default function Home() {
     return (

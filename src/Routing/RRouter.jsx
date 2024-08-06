@@ -14,8 +14,7 @@ import SportAoutDoor from '../Pages/SportAoutDoor';
 import BabysAtoys from '../Pages/BabysAtoys';
 import GroceriesApets from '../Pages/GroceriesApets';
 import HealthAbeauity from '../Pages/HealthAbeauity';
-import SideBarPLayout from '../Pages/SideBarPLayout';
-
+import SideBarPLayout from '../Components/SideBarPLayout';
 
 const RRouter = () => {
     return (
