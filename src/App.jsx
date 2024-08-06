@@ -1,13 +1,16 @@
 
 import Footer from "./Components/Footer";
-import Home from "./Components/Home";
-import Navbar from "./Components/Navbar"
+import Navbar from "./Components/Navbar";
+import RRouter from "./Routing/RRouter";
+
+
 export default function App() {
   return (
     <>
     <Navbar/>
-    <Home/>
+    <RRouter/>
     <Footer/>
+   
     </>
   )
 }
