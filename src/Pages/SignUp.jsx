@@ -16,15 +16,15 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex min-h-screen bg-white mt-20">
-      <div className="hidden md:flex w-1/2 bg-white">
+    <div className="flex flex-col md:flex-row min-h-screen bg-white mt-20">
+      <div className="order-1 md:order-1 w-full md:w-1/2 bg-white">
         <img
           src={SignUpimg1}
           alt="Shopping Cart"
           className="w-full h-5/6 object-cover rounded-r-sm"
         />
       </div>
-      <div className="flex flex-col w-full max-w-md px-20 py-12 mx-auto sm:px-10 sm:py-8 sm:mx-20 md:px-20 md:py-12">
+      <div className="order-2 md:order-2 flex flex-col w-full max-w-md px-20 py-12 mx-auto sm:px-10 sm:py-8 sm:mx-20 md:px-20 md:py-12">
         <div className="flex justify-center item-center">
           <h2 className="tracking-wider text-3xl font-bold text-gray-700">Create an account</h2>
         </div>
@@ -33,10 +33,7 @@ export default function SignUp() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
-            <label
-              htmlFor="name"
-              className="text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="name" className="text-gray-700 text-sm font-bold mb-2">
               Name
             </label>
             <input
@@ -94,5 +91,6 @@ export default function SignUp() {
         </form>
       </div>
     </div>
+
   );
 };
