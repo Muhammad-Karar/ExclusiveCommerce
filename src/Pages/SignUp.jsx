@@ -26,8 +26,8 @@ export default function SignUp() {
       </div>
       <div className="order-2 md:order-2 flex flex-col w-full max-w-md px-20 py-12 mx-auto sm:px-10 sm:py-8 sm:mx-20 md:px-20 md:py-12">
         <div className="flex justify-center item-center">
-          <h2 className="tracking-wider text-3xl font-bold text-gray-700">Create an account</h2>
-        </div>
+          <h2 className="tracking-wider md:text-3xl font-bold text-gray-700 sm:text-lg">Create an account</h2>
+        </div>  
         <div className="flex justify-center item-center">
           <h3 className="text-sm text-gray-700 mb-6">Enter your Details below</h3>
         </div>
