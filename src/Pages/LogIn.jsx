@@ -61,10 +61,9 @@ export default function LogIn() {
                             Log In
                         </button>
                         <a href="#" className="underline text-red-500">
-                            Forgot Password
+                            Forgot Password?
                         </a>
                     </div>
-
                 </form>
             </div>
         </div>

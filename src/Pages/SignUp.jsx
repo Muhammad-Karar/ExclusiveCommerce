@@ -28,7 +28,7 @@ export default function SignUp() {
       <div className="order-2 md:order-2 flex flex-col w-full max-w-md px-20 py-12 mx-auto sm:px-10 sm:py-8 sm:mx-20 md:px-20 md:py-12">
         <div className="flex justify-center item-center">
           <h2 className="tracking-wider md:text-3xl font-bold text-gray-700 sm:text-lg">Create an account</h2>
-        </div>  
+        </div>
         <div className="flex justify-center item-center">
           <h3 className="text-sm text-gray-700 mb-6">Enter your Details below</h3>
         </div>
@@ -80,12 +80,13 @@ export default function SignUp() {
           <div className="mb-4 flex justify-center items-center">
             <a
               href="#"
-              className="text-gray-700 font-bold py-2 px-12 w-full rounded inline-flex border md:text-md sm:text-sm"
+              className="text-gray-700 font-bold py-2 px-12 w-full rounded inline-flex border text-sm md:text-md"
             >
               <img src={G} alt="" className="w-5 h-5 mr-2" />
               Sign up with Google
             </a>
           </div>
+
           <div className="mt-4 text-center">
             Already have an account? <Link to="/login" className="underline">Log in</Link>
           </div>
