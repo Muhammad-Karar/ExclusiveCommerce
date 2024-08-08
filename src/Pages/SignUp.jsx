@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import SignUpimg1 from '../assets/SignUpimg1.png';
 import G from '../assets/G.png';
 import { Link } from 'react-router-dom';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [visiable, setVisibility] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,41 +36,50 @@ export default function SignUp() {
           <h3 className="text-sm text-gray-700 mb-6">Enter your Details below</h3>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label htmlFor="name" className="text-gray-700 text-sm font-bold mb-2">
-              Name
-            </label>
+          <div className="relative mb-6">
             <input
               type="text"
               id="name"
-              className="peer placeholder-transparent w-full focus:outline-none border-b-2 border-gray-300 focus:border-gray-500 transition-all duration-300"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer"
+              placeholder=" "
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-              Email or Phone Number
+            <label
+              htmlFor="name"
+              className="absolute text-gray-700 text-sm font-bold duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Name
             </label>
+          </div>
+          <div className="relative mb-6">
             <input
               type="email"
               id="email"
-              className="peer placeholder-transparent w-full focus:outline-none border-b-2 border-gray-300 focus:border-gray-500 transition-all duration-300"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer"
+              placeholder=""
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
-              Password
+            <label htmlFor="email" className="absolute text-gray-700 text-sm font-bold duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              Email or Phone Number
             </label>
+          </div>
+          <div className="relative mb-6">
             <input
-              type="password"
+              type={visiable ? "text" : "password"}
               id="password"
-              className="peer placeholder-transparent w-full focus:outline-none border-b-2 border-gray-300 focus:border-gray-500 transition-all duration-300"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer"
+              placeholder=""
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <label htmlFor="password" className="absolute text-gray-700 text-sm font-bold duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              Password
+            </label>
+            <div className="absolute top-2 right-0 p-2 cursor-pointer" onClick={() => setVisibility(!visiable)}>
+              {visiable ? <FontAwesomeIcon icon={faEyeSlash} className="w-4 h-4 text-gray-600" /> : <FontAwesomeIcon icon={faEye} className="w-4 h-4 text-gray-600" />}
+            </div>
           </div>
           <div className="mb-4 flex justify-center item-center">
             <button
