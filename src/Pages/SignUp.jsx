@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SignUpimg1 from '../assets/SignUpimg1.png';
 import G from '../assets/G.png';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -79,18 +80,17 @@ export default function SignUp() {
           <div className="mb-4 flex justify-center items-center">
             <a
               href="#"
-              className="text-gray-700 font-bold py-2 px-12 w-full rounded inline-flex border"
+              className="text-gray-700 font-bold py-2 px-12 w-full rounded inline-flex border md:text-md sm:text-sm"
             >
-              <img src={G} alt="" className="w-5 h-5 mr-2 mt-1" />
+              <img src={G} alt="" className="w-5 h-5 mr-2" />
               Sign up with Google
             </a>
           </div>
           <div className="mt-4 text-center">
-            Already have an account? <a href="#" className="underline">Log in</a>
+            Already have an account? <Link to="/login" className="underline">Log in</Link>
           </div>
         </form>
       </div>
     </div>
-
   );
 };

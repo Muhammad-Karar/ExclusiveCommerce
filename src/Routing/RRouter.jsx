@@ -15,6 +15,7 @@ import BabysAtoys from '../Pages/BabysAtoys';
 import GroceriesApets from '../Pages/GroceriesApets';
 import HealthAbeauity from '../Pages/HealthAbeauity';
 import SideBarPLayout from '../Components/SideBarPLayout';
+import LogIn from '../Pages/LogIn';
 
 const RRouter = () => {
     return (
@@ -33,6 +34,7 @@ const RRouter = () => {
             </Route>
             
             <Route path='signup' element={<SignUp />} />
+            <Route path='login' element={<LogIn />} />
             <Route path='contact' element={<Contact />} />
             <Route path='about' element={<About />} />
         </Routes>
