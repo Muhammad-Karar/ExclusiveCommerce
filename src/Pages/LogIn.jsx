@@ -65,7 +65,7 @@ export default function LogIn() {
                         </label>
                     </div>
 
-                    <div className="mb-4 flex justify-between items-center">
+                    <div className="mb-4 flex flex-col items-center md:flex-row md:justify-between">
                         <button
                             type="submit"
                             className="bg-red-500 hover:bg-red-700 hover:duration-700 text-white font-bold w-auto px-4 py-2 rounded focus:outline-none focus-shadow-outline"
