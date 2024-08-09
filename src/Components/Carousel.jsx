@@ -17,23 +17,23 @@ export default function Carousel() {
     }, []);
 
     return (
-        <div className="w-full p-10 mt-14">
-            <div className="relative h-96">
+        <div className="w-full p-4 sm:p-6 md:p-10 mt-14">
+            <div className="relative h-60 sm:h-80 md:h-96">
                 <img
                     src={images[activeIndex]}
                     alt="Slider Image"
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 justify-center">
+                <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 justify-center">
                     {images.map((_, index) => (
                         <div
                             key={index}
-                            className={`h-2 w-2 rounded-full ${index === activeIndex ? 'bg-red-500' : 'bg-gray-400'
-                                }`}
+                            className={`h-2 w-2 rounded-full ${index === activeIndex ? 'bg-red-500' : 'bg-gray-400'}`}
                         />
                     ))}
                 </div>
             </div>
         </div>
+
     )
 }
