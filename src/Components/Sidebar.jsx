@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     return (
-        <div className="w-2/5 md:w-1/5 md:pl-14 md:pt-5 md:mt-14 border-r border-black">
+        <div className="w-2/5 mt-14 md:w-1/5 md:pl-14 md:pt-5 md:mt-14 border-r border-black">
             <ul>
                 <li className="mb-2">
                     <Link

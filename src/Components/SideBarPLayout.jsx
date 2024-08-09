@@ -9,7 +9,7 @@ export default function SideBarPLayout() {
     const showCarousel = location.pathname === '/';
     return (
         <div className="flex">
-            <Sidebar className="w-1/4" />
+            <Sidebar className="w-full md:w-1/4" />
             <div className="w-3/4">
                 {showCarousel ? <Carousel /> : <Outlet />}
             </div>
