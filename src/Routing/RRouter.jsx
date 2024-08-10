@@ -34,7 +34,7 @@ const RRouter = () => {
             </Route>
             
             <Route path='signup' element={<SignUp />} />
-            <Route path='login' element={<LogIn />} />
+            <Route path='signup/login' element={<LogIn />} />
             <Route path='contact' element={<Contact />} />
             <Route path='about' element={<About />} />
         </Routes>
