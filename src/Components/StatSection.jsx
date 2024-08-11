@@ -11,14 +11,14 @@ const history = [
 
 export default function StatSection() {
     return (
-        <div className="flex flex-col md:flex-row justify-center space-x-12">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8">
             {history.map((index) => (
                 <div
-                    className="h-48 w-60 space-y-2 border rounded-md flex flex-col 
+                    className="h-48 w-60 space-y-2 border rounded-md flex flex-col mt-4
             items-center justify-center cursor-pointer p-4 shadow-lg 
             hover:bg-red-500 hover:text-white group hover:duration-700">
                     <div className="bg-gray-200 p-2 rounded-full">
-                        <div className="bg-black p-4 rounded-full group-hover:bg-white  group-hover:duration-700">
+                        <div className="bg-black p-4 rounded-full group-hover:bg-white group-hover:duration-700">
                             <FontAwesomeIcon icon={index.icon} className="text-3xl text-white group-hover:text-black  group-hover:duration-700" />
                         </div>
                     </div>
