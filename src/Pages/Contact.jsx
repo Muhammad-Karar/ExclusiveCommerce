@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useNavigate, useForm } from 'react';
 import BreadCrumb from '../Components/BreadCrumb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -97,6 +98,7 @@ export default function Contact() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full p-3 border border-ray-300 rounded-sm mb-4 md:mb-0 bg-gray-100"
+                    required
                   />
                   <input
                     type="email"
@@ -104,13 +106,16 @@ export default function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full p-3 border border-gray-300 rounded-sm mb-4 md:mb-0 bg-gray-100"
+                    required
                   />
                   <input
                     type="text"
                     placeholder="Your Phone *"
                     value={phone}
+                    pattern="03[0-9]{9}"
                     onChange={(e) => setPhone(e.target.value)}
                     className="w-full p-3 border border-gray-300 rounded-sm bg-gray-100"
+                    required
                   />
                 </div>
                 <textarea
@@ -119,6 +124,7 @@ export default function Contact() {
                   onChange={(e) => setMessage(e.target.value)}
                   className="w-full p-3 border border-gray-300 rounded-sm mt-4 bg-gray-100"
                   rows="6"
+                  required
                 ></textarea>
                 <div className="grid justify-items-end">
                   <button type='submit' className="bg-red-400 text-white font-semibold p-3 rounded-lg 
