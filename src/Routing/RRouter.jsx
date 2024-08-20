@@ -16,6 +16,8 @@ import GroceriesApets from '../Pages/GroceriesApets';
 import HealthAbeauity from '../Pages/HealthAbeauity';
 import SideBarPLayout from '../Components/SideBarPLayout';
 import LogIn from '../Pages/LogIn';
+import WishList from '../Pages/WishList';
+import Cart from '../Pages/Cart';
 
 const RRouter = () => {
     return (
@@ -37,6 +39,8 @@ const RRouter = () => {
             <Route path='signup/login' element={<LogIn />} />
             <Route path='contact' element={<Contact />} />
             <Route path='about' element={<About />} />
+            <Route path='wishlist' element={<WishList />} />
+            <Route path='cart' element={<Cart />} />
         </Routes>
     );
 };

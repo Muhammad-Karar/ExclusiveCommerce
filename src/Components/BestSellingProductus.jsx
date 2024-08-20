@@ -1,62 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import BSproduct1 from '../assets/BSproduct1.png';
-import BSproduct2 from '../assets/BSproduct2.png';
-import BSproduct3 from '../assets/BSproduct3.png';
-import BSproduct4 from '../assets/BSproduct4.png';
 import Slider from "react-slick";
 import '../App.css';
+import { BestSellingData } from '../redux/Api';
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/CartReducer";
 
 export default function BestSellingProductus() {
 
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            name: "The north coat",
-            image: BSproduct1,
-            price: 260,
-            originalPrice: 360,
-            discount: 40,
-            reviews: 65,
-        },
-        {
-            id: 2,
-            name: "Gucci duffle bag",
-            image: BSproduct2,
-            price: 960,
-            originalPrice: 1160,
-            discount: 35,
-            reviews: 65,
-        },
-        {
-            id: 3,
-            name: "RGB liquid CPU Cooler",
-            image: BSproduct3,
-            price: 160,
-            originalPrice: 170,
-            discount: 30,
-            reviews: 65,
-        },
-        {
-            id: 4,
-            name: "Small Bookself",
-            image: BSproduct4,
-            price: 360,
-            originalPrice: 400,
-            discount: 25,
-            reviews: 65,
-        },
-        {
-            id: 5,
-            name: "Small Bookself",
-            image: BSproduct4,
-            price: 360,
-            originalPrice: 400,
-            discount: 25,
-            reviews: 65,
-        },
-    ]);
+    const dispatch = useDispatch();
     const [hoveredImageId, setHoveredImageId] = useState(null);
     var settings = {
         dots: true,
@@ -112,7 +65,7 @@ export default function BestSellingProductus() {
                 </div>
             </div>
             <Slider {...settings}>
-                {products.map((product) => (
+                {BestSellingData.map((product) => (
                     <div key={product.id} className="p-2">
                         <div
                             className="bg-white relative"
@@ -128,7 +81,9 @@ export default function BestSellingProductus() {
                                 <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
-                                            onClick={() => handleProductClick(product)}
+                                            onClick={(e) => dispatch(addItem({id: product.id, 
+                                                name: product.name, price: product.price, image: product.image,
+                                                discount: product.discount}))}
                                             className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
                                             Add To Cart

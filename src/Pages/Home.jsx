@@ -8,6 +8,8 @@ import NewArrival from '../Components/NewArrival';
 import Feature from '../Components/Feature';
 import SideBarPLayout from '../Components/SideBarPLayout';
 
+
+
 export default function Home() {
     return (
         <>

@@ -1,68 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart} from '@fortawesome/free-regular-svg-icons';
-import FS1 from '../assets/FSproduct1.png';
-import FS2 from '../assets/FSproduct2.png';
-import FS3 from '../assets/FSproduct3.png';
-import FS4 from '../assets/FSproduct4.png';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../App.css';
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/CartReducer";
+import { addItemToWishList } from "../redux/WishListReducer";
+import { FlashSaleData } from '../redux/Api';
 
 export default function FlashSales() {
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            name: "HAVIT HV-G92 Gamepad",
-            image: FS1,
-            price: 120,
-            originalPrice: 160,
-            discount: 40,
-            rating: "-40%",
-            reviews: 88,
-        },
-        {
-            id: 2,
-            name: "AK-900 Wired Keyboard",
-            image: FS2,
-            price: 960,
-            originalPrice: 1160,
-            discount: 35,
-            rating: "-35%",
-            reviews: 75,
-        },
-        {
-            id: 3,
-            name: "IPS LCD Gaming Monitor",
-            image: FS3,
-            price: 370,
-            originalPrice: 400,
-            discount: 30,
-            rating: "-30%",
-            reviews: 99,
-        },
-        {
-            id: 4,
-            name: "S-Series Comfort Chair",
-            image: FS4,
-            price: 375,
-            originalPrice: 400,
-            discount: 25,
-            rating: "-25%",
-            reviews: 99,
-        },
-        {
-            id: 5,
-            name: "S-Series Comfort Chair",
-            image: FS4,
-            price: 375,
-            originalPrice: 400,
-            discount: 25,
-            rating: "-25%",
-            reviews: 99,
-        },
-    ]);
+    const dispatch = useDispatch();
 
     const [countdown, setCountdown] = useState({
         days: 0,
@@ -99,12 +48,6 @@ export default function FlashSales() {
         return () => clearInterval(interval);
     }, [countdown]);
 
-    const [currentProduct, setCurrentProduct] = useState(null);
-    const [showCart, setShowCart] = useState(false);
-
-    const handleProductClick = (product) => {
-        setCurrentProduct(product);
-    };
     const [hoveredImageId, setHoveredImageId] = useState(null);
     var settings = {
         dots: true,
@@ -183,7 +126,7 @@ export default function FlashSales() {
                 </div>
             </div>
             <Slider {...settings}>
-                {products.map((product) => (
+                {FlashSaleData.map((product) => (
                     <div key={product.id} className="p-2">
                         <div
                             className="bg-white relative"
@@ -192,17 +135,24 @@ export default function FlashSales() {
                         >
                             <div className="relative">
                                 <div className="absolute top-2 left-2 bg-red-400 text-xs text-white w-12 h-6 py-1 px-2 rounded-md">
-                                    {product.rating}
+                                    - {product.discount}%
                                 </div>
                                 <div className="absolute top-1 right-2 flex flex-col gap-1 rounded-full">
-                                    <button className="bg-white rounded-full w-8 h-8">
+                                    <button onClick={(e) => dispatch(addItemToWishList({id: product.id, 
+                                        name: product.name, image: product.image, price: product.price,
+                                        originalPrice: product.originalPrice, discount: product.discount,
+                                        reviews: product.reviews
+                                    }))} 
+                                    className="bg-white rounded-full w-8 h-8">
                                         <FontAwesomeIcon icon={faHeart} className="w-4 h-4 text-gray-600" />
                                     </button>
                                 </div>
                                 <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
-                                            onClick={() => handleProductClick(product)}
+                                            onClick={(e) => dispatch(addItem({id: product.id, 
+                                                name: product.name, price: product.price, image: product.image,
+                                                discount: product.discount}))}
                                             className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
                                             Add To Cart
