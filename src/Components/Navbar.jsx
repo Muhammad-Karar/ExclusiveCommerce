@@ -9,7 +9,7 @@ import { getWishListItemsSelector } from '../redux/WishListReducer';
 function Navbar() {
     const item = useSelector(getItemsSelector);
     const wishItem = useSelector(getWishListItemsSelector);
-    
+
     return (
         <nav className="bg-white shadow-md fixed top-0 left-0 z-50 w-full">
             <div className="container mx-auto px-4 py-2 flex justify-between items-center">
@@ -46,15 +46,15 @@ function Navbar() {
                         <Link to="/wishlist">
                             <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
                                 <FaRegHeart className="h-7 w-7" />
-                                <div className="bg-red-600 w-4 h-4 text-white rounded-full -top-1 -end-1 absolute
+                                <div className="bg-red-600 w-4 h-4 text-white rounded-full -top-0.5 -end-1.5 absolute
                                 text-xs font-bold">{wishItem.length}</div>
                             </button>
                         </Link>
                         <Link to="/cart">
-                            <button className="relative rounded-full bg-gray-200 w-10 h-10 px-2.5 my-1 hover:bg-red-400 hover:text-white hover:duration-700">
-                                <LuShoppingBag className="h-5 w-5" />
-                                <div className="bg-red-600 w-5 h-5 text-white rounded-full -top-2 -end-2 absolute
-                                text-xs font-bold p-0.5">{item.length}</div>
+                            <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
+                                <LuShoppingBag className="h-7 w-7" />
+                                <div className="bg-red-600 w-4 h-4 text-white rounded-full -top-0.5 -end-1.5 absolute
+                                text-xs font-bold">{item.length}</div>
                             </button>
                         </Link>
                     </div>
@@ -114,16 +114,20 @@ function Navbar() {
                             />
                         </svg>
                     </button>
-                    <button className="relative rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
-                    <FaRegHeart className="h-5 w-5" />
-                                <div className="bg-red-600 w-5 h-5 text-white rounded-full -top-2 -end-2 absolute
-                                text-xs font-bold p-0.5">{wishItem.length}</div>
-                    </button>
-                    <button className="relative rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
-                    <LuShoppingBag className="h-5 w-5" />
-                                <div className="bg-red-600 w-5 h-5 text-white rounded-full -top-2 -end-2 absolute
-                                text-xs font-bold p-0.5">{item.length}</div>
-                    </button>
+                    <Link to="/wishlist">
+                        <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
+                            <FaRegHeart className="h-5 w-5" />
+                            <div className="bg-red-600 w-4 h-4 text-white rounded-full top-1 end-0.5 absolute
+                                text-xs font-bold">{wishItem.length}</div>
+                        </button>
+                    </Link>
+                    <Link to="/cart">
+                        <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
+                            <LuShoppingBag className="h-5 w-5" />
+                            <div className="bg-red-600 w-4 h-4 text-white rounded-full top-1 end-0.5 absolute
+                                text-xs font-bold">{item.length}</div>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </nav>

@@ -190,4 +190,15 @@ const ourProductData = [
     },
 ]
 
-export { FlashSaleData, BestSellingData, ourProductData };
+// Promo banner Data
+import MExproduct1 from '../assets/MExproduct1.png';
+const MEProductData = [
+    {
+        id: 21,
+        image: MExproduct1,
+        name: "MP3 Speaker",
+        price: 1200,
+    }
+]
+
+export { FlashSaleData, BestSellingData, ourProductData, MEProductData };
