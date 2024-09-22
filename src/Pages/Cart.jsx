@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import BreadCrumb from '../Components/BreadCrumb';
 import { useSelector, useDispatch } from 'react-redux';
-import { getItemsSelector, removeItem, increaseQuantity, decreaseQuantity } from '../redux/CartReducer';
+import { getItemsSelector, removeItem, increaseQuantity, decreaseQuantity, clearCart } from '../redux/CartReducer';
 import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
@@ -55,11 +55,12 @@ export default function Cart() {
                         </div>
                     </div>
                 ))}
-
                 {/* Action Buttons */}
                 <div className="flex justify-between mt-4">
                     <button onClick={() => navigate('/')} className="px-4 py-3 w-44 border rounded-md border border-2 
                     font-bold hover:bg-gray-100 hover:duration-700">Return To Shop</button>
+                    <button onClick={() => dispatch(clearCart())} className="px-4 py-3 w-44 border rounded-md border border-2 
+                    font-bold hover:bg-gray-100 hover:duration-700">Clear Cart</button>
                 </div>
 
                 {/* Coupon Section */}

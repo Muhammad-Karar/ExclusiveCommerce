@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../App.css';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/CartReducer";
-import { addItemToWishList } from "../redux/WishListReducer";
+import { toggleWishListItem, getWishListItemsSelector } from "../redux/WishListReducer";
 import { FlashSaleData } from '../redux/Api';
 
 export default function FlashSales() {
     const dispatch = useDispatch();
+    const wishListItems = useSelector(getWishListItemsSelector); // Select wishlist items from state
+
+    // Helper function to check if an item is in the wishlist
+    const isItemInWishList = (productId) => {
+        return wishListItems.some(item => item.id === productId);
+    };
 
     const [countdown, setCountdown] = useState({
         days: 0,
@@ -84,6 +91,7 @@ export default function FlashSales() {
         ]
     };
 
+
     return (
         <div className="container mx-auto py-10 max-w-screen-xl">
             <div className="flex items-center justify-between">
@@ -138,21 +146,31 @@ export default function FlashSales() {
                                     - {product.discount}%
                                 </div>
                                 <div className="absolute top-1 right-2 flex flex-col gap-1 rounded-full">
-                                    <button onClick={(e) => dispatch(addItemToWishList({id: product.id, 
-                                        name: product.name, image: product.image, price: product.price,
-                                        originalPrice: product.originalPrice, discount: product.discount,
-                                        reviews: product.reviews
-                                    }))} 
-                                    className="bg-white rounded-full w-8 h-8">
-                                        <FontAwesomeIcon icon={faHeart} className="w-4 h-4 text-gray-600" />
+                                    <button
+                                        onClick={() => dispatch(toggleWishListItem({
+                                            id: product.id,
+                                            name: product.name,
+                                            image: product.image,
+                                            price: product.price,
+                                            reviews: product.reviews,
+                                            discount: product.discount
+                                        }))}
+                                        className="bg-white rounded-full w-8 h-8"
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={isItemInWishList(product.id) ? solidHeart : regularHeart}
+                                            className={`w-4 h-4 ${isItemInWishList(product.id) ? "text-red-500" : "text-gray-600"}`}
+                                        />
                                     </button>
                                 </div>
                                 <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
-                                            onClick={(e) => dispatch(addItem({id: product.id, 
+                                            onClick={(e) => dispatch(addItem({
+                                                id: product.id,
                                                 name: product.name, price: product.price, image: product.image,
-                                                discount: product.discount}))}
+                                                discount: product.discount
+                                            }))}
                                             className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
                                             Add To Cart

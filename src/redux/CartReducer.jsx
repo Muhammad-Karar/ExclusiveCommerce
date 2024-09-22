@@ -46,7 +46,11 @@ const CartReducer = createSlice({
             }
             // Update the total price
             state.total = state.Cart.reduce((sum, item) => sum + item.totalPrice, 0);
-        }
+        },
+        clearCart: (state) => {
+            state.Cart = [];
+            state.total = state.Cart.reduce((sum, item) => sum + item.totalPrice, 0);
+        },
     },
 });
 
@@ -55,5 +59,5 @@ export const getItemsSelector = createSelector(
     (Cart) => Cart
 );
 
-export const { addItem, removeItem, increaseQuantity, decreaseQuantity } = CartReducer.actions; 
+export const { addItem, removeItem, increaseQuantity, decreaseQuantity, clearCart } = CartReducer.actions; 
 export default CartReducer.reducer;

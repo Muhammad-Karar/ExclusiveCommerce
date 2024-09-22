@@ -44,10 +44,10 @@ function Navbar() {
                             </svg>
                         </div>
                         <Link to="/wishlist">
-                            <button className="relative rounded-full bg-gray-200 w-10 h-10 px-2.5 my-1 hover:bg-red-400 hover:text-white hover:duration-700">
-                                <FaRegHeart className="h-5 w-5" />
-                                <div className="bg-red-600 w-5 h-5 text-white rounded-full -top-2 -end-2 absolute
-                                text-xs font-bold p-0.5">{wishItem.length}</div>
+                            <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
+                                <FaRegHeart className="h-7 w-7" />
+                                <div className="bg-red-600 w-4 h-4 text-white rounded-full -top-1 -end-1 absolute
+                                text-xs font-bold">{wishItem.length}</div>
                             </button>
                         </Link>
                         <Link to="/cart">
@@ -117,7 +117,7 @@ function Navbar() {
                     <button className="relative rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
                     <FaRegHeart className="h-5 w-5" />
                                 <div className="bg-red-600 w-5 h-5 text-white rounded-full -top-2 -end-2 absolute
-                                text-xs font-bold p-0.5">15</div>
+                                text-xs font-bold p-0.5">{wishItem.length}</div>
                     </button>
                     <button className="relative rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
                     <LuShoppingBag className="h-5 w-5" />
