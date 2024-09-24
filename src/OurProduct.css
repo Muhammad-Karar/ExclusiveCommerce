@@ -1,22 +1,43 @@
 
 .two-row-slider .slick-prev, .slick-next {
-    z-index: 1;
-    color: black;  /* Change button color to black for visibility */
-    width: 30px;
-    height: 30px;
+  z-index: 1;
+  color: black;  /* Change button color to black for visibility */
+  width: 30px;
+  height: 30px;
+}
+
+.two-row-slider .slick-prev::before, .slick-next::before {
+  font-size: 25px;
+  color: slategrey;  /* Change button icon color to black */
+}
+
+.two-row-slider .slick-prev {
+  left: -55px;
+  top: 260px;  /* Adjust the position if needed */
+}
+
+.two-row-slider .slick-next {
+  right: -50px;  /* Adjust the position if needed */
+  top: 260px;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .two-row-slider .slick-prev, .slick-next {
+    z-index: initial;
+    color: initial;
+    width: initial;
+    height: initial;
   }
-  
+
   .two-row-slider .slick-prev::before, .slick-next::before {
-    font-size: 25px;
-    color: slategrey;  /* Change button icon color to black */
+    font-size: initial;
+    color: initial;
   }
-  
-  .two-row-slider .slick-prev {
-    left: -55px;
-    top: 260px;  /* Adjust the position if needed */
+
+  .two-row-slider .slick-prev, .two-row-slider .slick-next {
+    left: initial;
+    right: initial;
+    top: initial;
   }
-  
-  .two-row-slider .slick-next {
-    right: -50px;  /* Adjust the position if needed */
-    top: 260px;
-  }
+}

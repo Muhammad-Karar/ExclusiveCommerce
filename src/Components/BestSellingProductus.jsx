@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slick";
-import '../App.css';
 import { BestSellingData } from '../redux/Api';
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/CartReducer";
