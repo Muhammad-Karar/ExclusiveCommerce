@@ -101,32 +101,32 @@ export default function FlashSales() {
                     <h1 className="text-2xl font-bold text-red-500">Today's</h1>
                 </div>
             </div>
-            <div className="flex items-center">
-                <div className="flex items-center">
+            <div className="flex flex-col md:flex-row items-start md:items-center">
+                <div className="flex items-center mb-4 md:mb-0">
                     <h2 className="text-3xl font-bold text-gray-800 mt-3">
                         Flash Sales
                     </h2>
                 </div>
-                <div className="flex items-center mt-3 ml-5">
-                    <div className="flex items-center ml-4">
+                <div className="flex flex-wrap items-center mt-3 md:ml-5">
+                    <div className="flex items-center ml-0 md:ml-4">
                         <span className="text-3xl font-bold text-gray-800">
                             {countdown.days}
                         </span>
                         <span className="text-sm text-gray-600 ml-2">Days</span>
                     </div>
-                    <div className="flex items-center ml-4">
+                    <div className="flex items-center ml-0 md:ml-4 mt-2 md:mt-0">
                         <span className="text-3xl font-bold text-gray-800">
                             {countdown.hours}
                         </span>
                         <span className="text-sm text-gray-600 ml-2">Hours</span>
                     </div>
-                    <div className="flex items-center ml-4">
+                    <div className="flex items-center ml-0 md:ml-4 mt-2 md:mt-0">
                         <span className="text-3xl font-bold text-gray-800">
                             {countdown.minutes}
                         </span>
                         <span className="text-sm text-gray-600 ml-2">Minutes</span>
                     </div>
-                    <div className="flex items-center ml-4">
+                    <div className="flex items-center ml-0 md:ml-4 mt-2 md:mt-0">
                         <span className="text-3xl font-bold text-gray-800">
                             {countdown.seconds}
                         </span>
