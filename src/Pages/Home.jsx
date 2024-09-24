@@ -12,15 +12,15 @@ import SideBarPLayout from '../Components/SideBarPLayout';
 
 export default function Home() {
     return (
-        <>
+        <div className='mx-2'>
             <SideBarPLayout />
-            <FlashSales/>
-            <Category/>
-            <BestSellingProductus/>
-            <PromoBanner/>
-            <OurProduct/>
-            <NewArrival/>
-            <Feature/>
-        </>
+            <FlashSales />
+            <Category />
+            <BestSellingProductus />
+            <PromoBanner />
+            <OurProduct />
+            <NewArrival />
+            <Feature />
+        </div>
     );
 }
