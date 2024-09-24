@@ -79,16 +79,16 @@ function Navbar() {
             </div>
             <div className="md:hidden hidden" id="mobile-menu">
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                    <Link to="/" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
                         Home
                     </Link>
-                    <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                    <Link to="/contact" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
                         Contact
                     </Link>
-                    <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                    <Link to="/about" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
                         About
                     </Link>
-                    <Link to="/signup" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
+                    <Link to="/signup" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
                         Sign Up
                     </Link>
                 </div>
@@ -98,7 +98,7 @@ function Navbar() {
                         placeholder="What are you looking for?"
                         className="border rounded-md px-3 py-2 focus:outline-none"
                     />
-                    <button className="rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
+                    <button className="w-10 h-10 rounded-full bg-gray-200 w-10 px-2.5 hover:bg-red-400 hover:text-white hover:duration-700">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -114,14 +114,14 @@ function Navbar() {
                             />
                         </svg>
                     </button>
-                    <Link to="/wishlist">
+                    <Link to="/wishlist" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} >
                         <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
                             <FaRegHeart className="h-5 w-5" />
                             <div className="bg-red-600 w-4 h-4 text-white rounded-full top-1 end-0.5 absolute
                                 text-xs font-bold">{wishItem.length}</div>
                         </button>
                     </Link>
-                    <Link to="/cart">
+                    <Link to="/cart" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} >
                         <button className="relative rounded-full w-10 h-10 px-2.5 my-1">
                             <LuShoppingBag className="h-5 w-5" />
                             <div className="bg-red-600 w-4 h-4 text-white rounded-full top-1 end-0.5 absolute

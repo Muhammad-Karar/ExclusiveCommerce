@@ -107,8 +107,8 @@ export default function FlashSales() {
                         Flash Sales
                     </h2>
                 </div>
-                <div className="flex flex-wrap items-center mt-3 md:ml-5">
-                    <div className="flex items-center ml-0 md:ml-4">
+                <div className="flex flex-wrap items-center mt-3 md:ml-5 gap-2">
+                    <div className="flex items-center ml-0 md:ml-4 mt-2 md:mt-0">
                         <span className="text-3xl font-bold text-gray-800">
                             {countdown.days}
                         </span>

@@ -36,8 +36,8 @@ export default function Category() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                     infinite: true,
                     dots: true
                 }
@@ -45,16 +45,16 @@ export default function Category() {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                     initialSlide: 2
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToShow: 2,
+                    slidesToScroll: 2
                 }
             }
         ]
@@ -77,15 +77,15 @@ export default function Category() {
                 {categories.map((category) => (
                     <div
                         key={category.id}
-                        className='px-4 my-8'
+                        className='px-1 sm:px-2 my-2 sm:my-4"'
                         onClick={() => handleCategoryClick(category.id)} 
                     >
-                        <div className={`h-32 w-40 border rounded-md flex flex-col items-center justify-center cursor-pointer
+                        <div className={`h-28 w-32 sm:h-32 sm:w-40 border rounded-md flex flex-col items-center justify-center cursor-pointer
             ${selectedCategory === category.id ? 'bg-red-500 text-white' : 'bg-white text-black'}`}>
-                            <div className="text-4xl mb-2">
+                            <div className="text-3xl sm:text-4xl mb-2">
                                 <FontAwesomeIcon icon={category.icon} />
                             </div>
-                            <div className="text-lg font-semibold">{category.name}</div>
+                            <div className="text-sm sm:text-lg font-semibold">{category.name}</div>
                         </div>
                     </div>
                 ))}
