@@ -27,6 +27,7 @@ export default function BestSellingProductus() {
         slidesToShow: 5,
         slidesToScroll: 5,
         initialSlide: 0,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 1024,

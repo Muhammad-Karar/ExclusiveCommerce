@@ -30,6 +30,7 @@ export default function OurProduct() {
         slidesToScroll: 4,
         initialSlide: 0,
         rows: 2,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 1024,

@@ -1,3 +1,5 @@
+
+
 .slick-prev, .slick-next {
   z-index: 1;
   color: black;  /* Change button color to black for visibility */
@@ -18,25 +20,4 @@
 .slick-next {
   right: -50px;  /* Adjust the position if needed */
   top: 100px;
-}
-
-/* Media query for small screens */
-@media (max-width: 768px) {
-  .slick-prev, .slick-next {
-    z-index: initial;
-    color: initial;
-    width: initial;
-    height: initial;
-  }
-
-  .slick-prev::before, .slick-next::before {
-    font-size: initial;
-    color: initial;
-  }
-
-  .slick-prev, .slick-next {
-    left: initial;
-    right: initial;
-    top: initial;
-  }
 }

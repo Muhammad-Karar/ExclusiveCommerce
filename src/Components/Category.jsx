@@ -31,6 +31,7 @@ export default function Category() {
         slidesToShow: 6,
         slidesToScroll: 6,
         initialSlide: 0,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 1024,
