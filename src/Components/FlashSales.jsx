@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/CartReducer";
 import { toggleWishListItem, getWishListItemsSelector } from "../redux/WishListReducer";
 import { FlashSaleData } from '../redux/Api';
+import Swal from "sweetalert2";
 
 export default function FlashSales() {
     const dispatch = useDispatch();
@@ -92,6 +93,35 @@ export default function FlashSales() {
         ]
     };
 
+    const handleSuccessAlert = () => {
+        // console.log("Alert function triggered");
+        let timerInterval;
+        Swal.fire({
+            title: "Added to cart successfully",
+            html: "visit to cart page and proceed to checkout, Thanks",
+            timer: 2000,
+            icon: "success",
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {
+                const timer = Swal.getHtmlContainer().querySelector("b");
+                timerInterval = setInterval(() => {
+                    if (Swal.getTimerLeft()) {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
+    };
+
+
 
     return (
         <div className="container mx-auto py-10 max-w-screen-xl">
@@ -167,45 +197,49 @@ export default function FlashSales() {
                                 <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
-                                            onClick={(e) => dispatch(addItem({
-                                                id: product.id,
-                                                name: product.name, price: product.price, image: product.image,
-                                                discount: product.discount
-                                            }))}
-                                            className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
+                                            onClick={(e) => {
+                                                dispatch(addItem({
+                                                    id: product.id,
+                                                    name: product.name, price: product.price, image: product.image,
+                                                    discount: product.discount
+                                                })); 
+                                                handleSuccessAlert();
+                                            }}
+                                    className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
-                                            Add To Cart
-                                        </button>
+                                    Add To Cart
+                                </button>
                                     )}
-                                </div>
-                                <img
-                                    src={product.image}
-                                    alt={product.name}
-                                    className="w-full h-48 object-scale-down rounded-sm bg-gray-100"
-                                />
                             </div>
-                            <div className="p-2">
-                                <h3 className="text-lg font-bold text-gray-800">
-                                    {product.name}
-                                </h3>
-                                <p className="text-sm">
-                                    <span className="text-red-500 font-bold">{product.price}</span>
-                                    <span className="text-gray-500 line-through ml-2">{product.originalPrice}</span>
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    Discount: {product.discount}%
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    Reviews: {product.reviews}
-                                </p>
-                            </div>
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-48 object-scale-down rounded-sm bg-gray-100"
+                            />
+                        </div>
+                        <div className="p-2">
+                            <h3 className="text-lg font-bold text-gray-800">
+                                {product.name}
+                            </h3>
+                            <p className="text-sm">
+                                <span className="text-red-500 font-bold">{product.price}</span>
+                                <span className="text-gray-500 line-through ml-2">{product.originalPrice}</span>
+                            </p>
+                            <p className="text-sm text-gray-600">
+                                Discount: {product.discount}%
+                            </p>
+                            <p className="text-sm text-gray-600">
+                                Reviews: {product.reviews}
+                            </p>
                         </div>
                     </div>
-                ))}
-            </Slider>
-            <div className="flex item-center justify-center m-8">
-                <button className="bg-red-400 px-5 py-2 rounded-sm text-white hover:bg-red-600">View All Products</button>
-            </div>
-        </div>
+                    </div>
+    ))
+}
+            </Slider >
+    <div className="flex item-center justify-center m-8">
+        <button className="bg-red-400 px-5 py-2 rounded-sm text-white hover:bg-red-600">View All Products</button>
+    </div>
+        </div >
     );
 }

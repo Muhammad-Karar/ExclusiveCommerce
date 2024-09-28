@@ -8,7 +8,7 @@ import { ourProductData } from '../redux/Api';
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/CartReducer";
 import { toggleWishListItem, getWishListItemsSelector } from "../redux/WishListReducer";
-
+import Swal from "sweetalert2";
 
 export default function OurProduct() {
 
@@ -59,6 +59,34 @@ export default function OurProduct() {
         ]
     };
 
+    const handleSuccessAlert = () => {
+        // console.log("Alert function triggered");
+        let timerInterval;
+        Swal.fire({
+            title: "Added to cart successfully",
+            html: "visit to cart page and proceed to checkout, Thanks",
+            timer: 2000,
+            icon: "success",
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {
+                const timer = Swal.getHtmlContainer().querySelector("b");
+                timerInterval = setInterval(() => {
+                    if (Swal.getTimerLeft()) {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
+    };
+
     return (
         <div className="container mx-auto py-10 max-w-screen-xl">
             <div className="flex items-center justify-between">
@@ -102,10 +130,12 @@ export default function OurProduct() {
                                 <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
-                                            onClick={(e) => dispatch(addItem({
+                                            onClick={(e) => {dispatch(addItem({
                                                 id: product.id,
                                                 name: product.name, price: product.price, image: product.image
-                                            }))}
+                                            }));
+                                            handleSuccessAlert();
+                                        }}
                                             className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
                                             Add To Cart

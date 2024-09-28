@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { LuShoppingBag } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa6";
@@ -9,6 +9,22 @@ import { getWishListItemsSelector } from '../redux/WishListReducer';
 function Navbar() {
     const item = useSelector(getItemsSelector);
     const wishItem = useSelector(getWishListItemsSelector);
+
+    const menuRef = useRef(null);
+
+    // Detect clicks outside the mobile menu
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuRef]);
 
     return (
         <nav className="bg-white shadow-md fixed top-0 left-0 z-50 w-full">
@@ -77,7 +93,7 @@ function Navbar() {
                     </div>
                 </div>
             </div>
-            <div className="md:hidden hidden" id="mobile-menu">
+            <div className="md:hidden hidden" id="mobile-menu" ref={menuRef}>
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <Link to="/" onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">
                         Home
