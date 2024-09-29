@@ -18,7 +18,7 @@ export default function Cart() {
             <div className="container mx-auto py-10 max-w-screen-xl space-y-6">
                 {/* Table Header */}
                 <div className="grid grid-cols-4 bg-gray-100 p-4 rounded-sm shadow-lg">
-                    <span className="font-semibold text-left text-lg sm:text-sm">Product</span>
+                    <span className="font-semibold text-left">Product</span>
                     <span className="font-semibold text-center">Price</span>
                     <span className="font-semibold text-center">Quantity</span>
                     <span className="font-semibold text-right">Subtotal</span>
@@ -77,7 +77,7 @@ export default function Cart() {
                     </div>
 
                     {/* Cart Total Section */}
-                    <div className="border border-2 border-black rounded-md p-6 w-full sm:w-96 mx-auto">
+                    <div className="border border-2 border-black rounded-md p-6 w-96">
                         <h2 className="text-lg font-semibold mb-4">Cart Total</h2>
                         <div className="flex justify-between mb-2">
                             <span className="font-medium">Subtotal:</span>
