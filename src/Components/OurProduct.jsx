@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
@@ -21,10 +21,20 @@ export default function OurProduct() {
     };
 
     const [hoveredImageId, setHoveredImageId] = useState(null);
+    
+    let sliderRef = useRef(null);
+    const next = () => {
+        sliderRef.current?.slickNext(); // Safely access the slickNext method
+        console.log("n")
+      };
+    
+      const previous = () => {
+        sliderRef.current?.slickPrev(); // Safely access the slickPrev method
+      };
     var settings = {
         dots: true,
         className: "center",
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -101,6 +111,24 @@ export default function OurProduct() {
                         Explore Our Products
                     </h2>
                 </div>
+                <div className="flex items-center justify-center">
+                    <div className="flex items-center space-x-3">
+                        {/* Previous Arrow */}
+                        <button
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500 hover:bg-red-600 shadow-lg text-white transition duration-300"
+                            onClick={previous}
+                        >
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        {/* Next Arrow */}
+                        <button
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500 hover:bg-red-600 shadow-lg text-white transition duration-300"
+                            onClick={next}
+                        >
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             <Slider {...settings} className="two-row-slider">
                 {ourProductData.map((product) => (
@@ -113,12 +141,14 @@ export default function OurProduct() {
                             <div className="relative">
                                 <div className="absolute top-1 right-2 flex flex-col gap-1 rounded-full">
                                     <button
-                                        onClick={() => dispatch(toggleWishListItem({id: product.id,
+                                        onClick={() => dispatch(toggleWishListItem({
+                                            id: product.id,
                                             name: product.name,
                                             image: product.image,
                                             price: product.price,
                                             reviews: product.reviews,
-                                            discount: product.discount}))}
+                                            discount: product.discount
+                                        }))}
                                         className="bg-white rounded-full w-8 h-8"
                                     >
                                         <FontAwesomeIcon
@@ -130,12 +160,13 @@ export default function OurProduct() {
                                 <div className="absolute bottom-0 left-0 w-full group">
                                     {hoveredImageId === product.id && (
                                         <button
-                                            onClick={(e) => {dispatch(addItem({
-                                                id: product.id,
-                                                name: product.name, price: product.price, image: product.image
-                                            }));
-                                            handleSuccessAlert();
-                                        }}
+                                            onClick={(e) => {
+                                                dispatch(addItem({
+                                                    id: product.id,
+                                                    name: product.name, price: product.price, image: product.image
+                                                }));
+                                                handleSuccessAlert();
+                                            }}
                                             className="bg-black text-white font-bold py-2 px-4 rounded-b-sm w-full"
                                         >
                                             Add To Cart
